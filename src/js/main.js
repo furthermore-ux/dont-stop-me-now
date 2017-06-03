@@ -3,6 +3,19 @@ if (document.getElementById('mobile')) {
   var negative = document.getElementById('btn-negative');
 
   var soundDir = "./assets/sounds/";
+
+  // intialize firebase-app
+  var config = {
+      apiKey: "AIzaSyBcg5vgymGbJ3xiLBFgv8qVZyIPvA4bS74",
+      authDomain: "dont-stop-me-now-ece45.firebaseapp.com",
+      databaseURL: "https://dont-stop-me-now-ece45.firebaseio.com",
+      projectId: "dont-stop-me-now-ece45"
+    };
+
+  firebase.initializeApp(config);
+
+  var logRef = firebase.database().ref('logs');
+
   var onPosition = function(location){
     console.log("initial position was received");
   };
@@ -17,6 +30,15 @@ if (document.getElementById('mobile')) {
     getPosition()
     .then((position) => {
       console.log("position received");
+      return logRef.push({
+        "time": new Date().toUTCString(),
+        "lat": position.coords.latitude,
+        "lon": position.coords.longitude,
+        "type": type
+      });
+    })
+    .then((ref) => {
+      console.log("pushed to firebase");
     })
     .catch((error) => {
       console.error(error);
