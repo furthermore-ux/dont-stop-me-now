@@ -52,6 +52,12 @@ gulp.task('js:vendor', function() {
     .pipe(gulp.dest(path.jsDist));
 });
 
+// copy assets
+gulp.task('assets', function() {
+  gulp.src('src/assets/**/*')
+    .pipe(gulp.dest('dist/assets/'));
+});
+
 // serve files and watch for changes with browser-sync
 gulp.task('serve', ['sass'], function() {
   browserSync.init({
@@ -65,8 +71,9 @@ gulp.task('serve', ['sass'], function() {
   gulp.watch(path.markup, ['markup']).on('change', browserSync.reload);
   gulp.watch(path.jsDev, ['js:dev']).on('change', browserSync.reload);
   gulp.watch(path.jsVendor, ['js:vendor']).on('change', browserSync.reload);
+  gulp.watch('src/assets/**/*', ['assets']).on('change', browserSync.reload);
 });
 
-gulp.task('build', ['markup', 'sass', 'js:dev', 'js:vendor']);
+gulp.task('build', ['markup', 'sass', 'js:dev', 'js:vendor', 'assets']);
 
 gulp.task('default', ['serve']);
