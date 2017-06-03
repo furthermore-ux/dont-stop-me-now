@@ -76,7 +76,28 @@ if (document.getElementById('map-page')) {
   function addPoint(data, key){
     var lat = data.child("lat").val();
     var lon = data.child("lon").val();
+    var type = data.child("type").val();
     console.log("received new point " + lat + "/" + lon);
+
+    var mapPoint = {
+      "id": key,
+      "type": "circle",
+      "paint": {
+        "circle-color": type === "positive" ? "#94fe38" : "#ff39e4",
+        "circle-stroke-width": 1
+      },
+      "source": {
+        "type": "geojson",
+        "data": {
+          "type": "Feature",
+          "geometry": {
+            "type": "Point",
+            "coordinates": [lon, lat]
+          }
+        }
+      }
+    };
+    map.addLayer(mapPoint);
   };
 
   var map = new mapboxgl.Map({
