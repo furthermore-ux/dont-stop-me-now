@@ -73,10 +73,19 @@ if (document.getElementById('mobile')) {
 if (document.getElementById('map-page')) {
   mapboxgl.accessToken = 'pk.eyJ1IjoibWQtZnVydGhlcm1vcmUiLCJhIjoiY2ozZnAwcmoyMDAwZDMzcDlldnZ5OTc1MyJ9.uSeNdCs1ZiuXLO2e7ToJIg';
 
+  function addPoint(data, key){
+    var lat = data.child("lat").val();
+    var lon = data.child("lon").val();
+    console.log("received new point " + lat + "/" + lon);
+  };
+
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10',
     center: [-0.127758, 51.507351],
     zoom: 13
   });
+
+  // listen to existing and newly added childs on the database node
+  logRef.on("child_added", addPoint);
 }
