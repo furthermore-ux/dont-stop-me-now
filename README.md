@@ -1,6 +1,8 @@
-# Base Gulp project
+# Don't stop me now
 
-A basic [Gulp](http://gulpjs.com/) project. Includes [Sass](http://sass-lang.com/) compilation, JS linting and concatenation, and [Browsersync](https://www.browsersync.io/)
+Part of [Run Hack](http://futurecities.catapult.org.uk/event/runhack-london-2017-innovating-make-cities-run-friendly/)
+
+
 
 #### Install
 
