@@ -3,7 +3,7 @@ var negative = $('.btn-negative');
 
 var soundDir = "./assets/sounds/";
 
-var bikeBell = new Audio(soundDir + 'bike-bell.wav');
+var bikeBell = new Audio(soundDir + 'bike-bellx3.wav');
     bikeBell.loop = false;
 
 var airHorn = new Audio(soundDir + 'air-horn.mp3');
