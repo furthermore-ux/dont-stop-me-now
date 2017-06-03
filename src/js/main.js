@@ -1,20 +1,21 @@
+// intialize firebase-app
+var config = {
+  apiKey: "AIzaSyBcg5vgymGbJ3xiLBFgv8qVZyIPvA4bS74",
+  authDomain: "dont-stop-me-now-ece45.firebaseapp.com",
+  databaseURL: "https://dont-stop-me-now-ece45.firebaseio.com",
+  projectId: "dont-stop-me-now-ece45"
+};
+
+firebase.initializeApp(config);
+
+var logRef = firebase.database().ref('logs');
+
 if (document.getElementById('mobile')) {
   var positive = document.getElementById('btn-positive');
   var negative = document.getElementById('btn-negative');
 
   var soundDir = "./assets/sounds/";
 
-  // intialize firebase-app
-  var config = {
-      apiKey: "AIzaSyBcg5vgymGbJ3xiLBFgv8qVZyIPvA4bS74",
-      authDomain: "dont-stop-me-now-ece45.firebaseapp.com",
-      databaseURL: "https://dont-stop-me-now-ece45.firebaseio.com",
-      projectId: "dont-stop-me-now-ece45"
-    };
-
-  firebase.initializeApp(config);
-
-  var logRef = firebase.database().ref('logs');
 
   var onPosition = function(location){
     console.log("initial position was received");
@@ -65,6 +66,7 @@ if (document.getElementById('mobile')) {
   negative.onclick = function() {
     console.log(':0');
     airHorn.play();
+    logLocation("negative");
   };
 }
 
