@@ -1,5 +1,5 @@
-var positive = $('.btn-positive');
-var negative = $('.btn-negative');
+var positive = document.getElementById('btn-positive');
+var negative = document.getElementById('btn-negative');
 
 var soundDir = "./assets/sounds/";
 
@@ -9,14 +9,14 @@ var bikeBell = new Audio(soundDir + 'bike-bellx3.wav');
 var airHorn = new Audio(soundDir + 'air-horn.mp3');
     airHorn.loop = false;
 
-positive.on('click', function() {
+positive.onclick = function() {
   console.log(':D');
 
   bikeBell.play();
-});
+}
 
-negative.on('click', function() {
-  console.log(':0');
+negative.onclick = function() {
+  console.log(':D');
 
   airHorn.play();
-});
+}
