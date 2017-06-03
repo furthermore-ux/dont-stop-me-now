@@ -3,14 +3,15 @@
 
 @import 'normalize';
 
-$brand-color: #f3b;
-$positive: #3f9;
-$negative: #f43;
+$background-color: #013;
+$positive: #94fe38;
+$negative: #ff39e4;
+
 
 
 html,
 body {
-  background-color: $brand-color;
+  background-color: $background-color;
   font-family: sans-serif;
   padding: 0 2.5vh;
   margin: 0;
@@ -18,14 +19,35 @@ body {
   overflow: hidden;
 }
 
-h1 {
-  $height: 18vh;
+.wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+}
 
-  text-align: center;
-  margin: 0;
-  height: $height;
-  line-height: $height;
-  font-size: 8vw;
+.header {
+  height: 18vh;
+  position: relative
+}
+
+.megaphone-img,
+.dont-stop-img,
+.runhack-img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.megaphone-img {
+
+}
+
+.dont-stop-img {
+  left: 56px;
+  margin-top: -2px;
+}
+
+.runhack-img {
+  right: 0;
 }
 
 .big-btn {
@@ -35,14 +57,18 @@ h1 {
   font-size: 10vh;
   appearance: none;
   border: 0;
-  border-radius: 10px;
-  border: 6px solid white;
-  color: white;
+  border-radius: 4px;
+  color: transparent;
+  outline: 0;
   transition: background-color .3s ease-in-out;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14vh;
 }
 
 .btn-positive {
   background-color: $positive;
+  background-image: url('/assets/nice.svg');
 
   &:hover,
   &:active {
@@ -52,6 +78,7 @@ h1 {
 
 .btn-negative {
   background-color: $negative;
+  background-image: url('/assets/angry.svg');
 
   &:hover,
   &:active {
